@@ -14,8 +14,29 @@ export default function App() {
   const [isLocalAvailable, setIsLocalAvailable] = useState(false);
   const [selectedAnalyte, setSelectedAnalyte] = useState(null);
 
-  // Check if local DB exists
+  // Check if static data.json exists or local API DB exists
   useEffect(() => {
+    // 1. Try loading static data.json (for GitHub Pages and offline static mode)
+    fetch('./data.json')
+      .then((res) => {
+        if (res.ok) return res.json();
+        throw new Error('No static data');
+      })
+      .then((json) => {
+        if (json && json.observations && json.observations.length > 0) {
+          setData(json);
+        }
+      })
+      .catch(() => {
+        // Fallback: check if local backend API exists
+        fetch('/api/local')
+          .then((res) => {
+            if (res.ok) setIsLocalAvailable(true);
+          })
+          .catch(() => setIsLocalAvailable(false));
+      });
+
+    // Also check if local API is available for live reload
     fetch('/api/local')
       .then((res) => {
         if (res.ok) setIsLocalAvailable(true);

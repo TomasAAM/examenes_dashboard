@@ -184,5 +184,21 @@ def manual_load(
     typer.echo(f"\nloaded {total} manual observation(s)")
 
 
+@app.command("export-static")
+def export_static() -> None:
+    """Export local database to static JSON for GitHub Pages deployment."""
+    from .web.export import export_static_json
+
+    try:
+        payload = export_static_json()
+        typer.secho(
+            f"Successfully exported {payload['kpis']['total_observations']} observations for static deployment.",
+            fg=typer.colors.GREEN,
+        )
+    except Exception as e:
+        typer.secho(f"Export failed: {e!s}", fg=typer.colors.RED)
+        raise typer.Exit(1) from e
+
+
 if __name__ == "__main__":
     app()
