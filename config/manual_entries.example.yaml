@@ -1,0 +1,42 @@
+# Results that never arrived as a PDF (paper reports, results read over the
+# phone, values transcribed from another lab's portal).
+#
+# Copy to config/manual_entries.yaml and edit. The real file is gitignored
+# because it holds health data.
+#
+# Load with:  uv run python -m examenes.cli manual load
+#
+# Entries are grouped into a synthetic "report" per (sample_date, lab_name), so
+# re-running the load updates in place instead of duplicating.
+#
+# Required : sample_date, analyte_code
+# Optional : lab_name, value_num, value_text, unit, ref_low, ref_high,
+#            ref_text, panel, sub_section, method, cod_lis
+#
+# analyte_code must already exist in config/analytes.yaml -- an unknown code is
+# a hard error rather than a silently invented analyte.
+
+entries:
+  - sample_date: 2024-06-15
+    lab_name: Clínica Alemana
+    analyte_code: ferritin
+    value_num: 88.0
+    unit: ng/mL
+    ref_low: 22
+    ref_high: 322
+    method: Inmunoensayo
+
+  - sample_date: 2024-06-15
+    lab_name: Clínica Alemana
+    analyte_code: hemoglobin
+    value_num: 15.1
+    unit: g/dL
+    ref_low: 13.0
+    ref_high: 17.0
+
+  # A non-numeric result goes in value_text, never value_num.
+  - sample_date: 2024-06-15
+    lab_name: Clínica Alemana
+    analyte_code: urine_nitrites
+    value_text: Negativo
+    ref_text: Negativo

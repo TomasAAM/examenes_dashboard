@@ -1,0 +1,30 @@
+# Health data — never commit. Keep these rules first.
+input/
+data/
+review/
+*.pdf
+*.duckdb
+*.duckdb.wal
+
+# Secrets
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+dist/
+build/
+
+# Manual entries hold health data; only the example is committed.
+config/manual_entries.yaml
+
+# Frontend
+node_modules/
+frontend/dist/
+
+# Golden test expectations are derived from real results; regenerate locally.
+tests/expected_values.json

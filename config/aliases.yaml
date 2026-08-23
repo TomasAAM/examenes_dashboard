@@ -1,0 +1,165 @@
+# Raw Spanish analyte names as printed by BioNet -> canonical analyte codes.
+#
+# Matching is case-insensitive and ignores trailing periods and repeated spaces.
+# A name that matches nothing here is never dropped: it is written to
+# review/unmapped_analytes.csv and the ingest exits non-zero.
+#
+# Resolution order: differential -> contextual -> aliases.
+
+# Plain, unambiguous names.
+aliases:
+  # Iron studies
+  "% SATURACION DE TRANSFERRINA": transferrin_saturation
+  "CAPACIDAD FIJACION FIERRO": tibc
+  "FERREMIA": serum_iron
+  "TRANSFERRINA": transferrin
+  "FERRITINA": ferritin
+
+  # Vitamins and minerals
+  "ACIDO FOLICO O FOLATO SERICO": folate
+  "VITAMINA B12 NIVEL SERICO": vitamin_b12
+  "25 OH VITAMINA D TOTAL": vitamin_d_25oh
+  "MAGNESIO": magnesium
+
+  # Haemogram, non-differential
+  "RECUENTO DE ERITROCITOS": rbc
+  "HEMATOCRITO": hematocrit
+  "V.C.M": mcv
+  "H.C.M": mch
+  "C.H.C.M": mchc
+  "R.D.W.": rdw
+  "RECUENTO DE PLAQUETAS": platelets
+  "RECUENTO DE LEUCOCITOS": wbc
+  "V.H.S": esr
+
+  # Haemogram differential rows that carry only a percentage
+  "Blastos": blasts_pct
+  "Promielocitos": promyelocytes_pct
+  "Mielocitos": myelocytes_pct
+  "Juveniles": metamyelocytes_pct
+  "Baciliformes": band_neutrophils_pct
+  "Plasmocitos": plasma_cells_pct
+  # Absolute neutrophil count, printed as its own row in the absolute column.
+  # Reconciles with the absolute count on the `Segmentados` row.
+  "R.A.N. (Recuento absoluto de neutrofilos)": neutrophils_abs
+
+  # Metabolic / biochemical
+  "ACIDO URICO": uric_acid
+  "ALBUMINA": albumin
+  "CALCIO": calcium
+  "FOSFORO": phosphorus
+  "NITROGENO UREICO": bun
+  "UREMIA": urea
+  "PROTEINAS TOTALES": protein_total
+  "CREATININA": creatinine
+
+  # Liver
+  "BILIRRUBINA TOTAL": bilirubin_total
+  "BILIRRUBINA DIRECTA": bilirubin_direct
+  "BILIRRUBINA INDIRECTA": bilirubin_indirect
+  "TRANSAMINASA OXALOACETICA": ast
+  "TRANSAMINASA PIRUVICA (GPT)": alt
+  "GAMA GLUTAMIL TRANSPEPTIDASA": ggt
+  "FOSFATASA ALCALINA": alkaline_phosphatase
+  "DESHIDROGENASA LACTICA (LDH)": ldh
+  "INDICE FIB 4": fib4
+
+  # Coagulation
+  "TPO. PROTROMBINA (seg)": prothrombin_time
+  "PROTROMBINA (%)": prothrombin_pct
+  "INR": inr
+
+  # Lipids
+  "COLESTEROL TOTAL": cholesterol_total
+  "COLESTEROL HDL": cholesterol_hdl
+  "COLESTEROL LDL": cholesterol_ldl
+  "COLESTEROL VLDL": cholesterol_vldl
+  "TRIGLICERIDOS": triglycerides
+  "RELACION TOTAL/HDL": cholesterol_ratio_total_hdl
+
+  # Thyroid
+  "HORMONA TIROESTIMULANTE (TSH)": tsh
+  "TIROXINA (T4)": t4_total
+  "TIROXINA LIBRE (T4L)": t4_free
+  "TRIYODOTIRONINA (T3)": t3_total
+
+  # Urine, physical examination
+  "ASPECTO": urine_appearance
+  "COLOR": urine_color
+  "DENSIDAD": urine_specific_gravity
+  "pH": urine_ph
+
+  # Urine, chemical examination (names unique to that panel)
+  "NITRITOS": urine_nitrites
+  "CUERPOS CETONICOS": urine_ketones
+  "UROBILINOGENO": urine_urobilinogen
+
+  # Urine, microscopy (names unique to that panel)
+  "CELULAS EPITELIALES": urine_epithelial_cells
+  "BACTERIAS": urine_bacteria
+  "CRISTALES": urine_crystals
+  "CILINDROS": urine_casts
+
+# Names whose meaning depends on where they appear. Most specific match wins.
+# Without these, urine chemistry `LEUCOCITOS` (qualitative "Negativo") would
+# collide with urine microscopy `LEUCOCITOS` (a count range) and with the
+# haemogram white-cell count.
+contextual:
+  - raw: "HEMOGLOBINA"
+    panel: "HEMOGRAMA"
+    code: hemoglobin
+  - raw: "HEMOGLOBINA"
+    panel: "ORINA COMPLETA"
+    sub_section: quimico
+    code: urine_hemoglobin
+
+  - raw: "GLUCOSA"
+    panel: "PERFIL BIOQUIMICO"
+    code: glucose
+  - raw: "GLUCOSA"
+    panel: "ORINA COMPLETA"
+    sub_section: quimico
+    code: urine_glucose
+
+  - raw: "LEUCOCITOS"
+    panel: "ORINA COMPLETA"
+    sub_section: quimico
+    code: urine_leukocytes_chem
+  - raw: "LEUCOCITOS"
+    panel: "ORINA COMPLETA"
+    sub_section: elementos_figurados
+    code: urine_leukocytes_micro
+
+  - raw: "ERITROCITOS"
+    panel: "ORINA COMPLETA"
+    sub_section: elementos_figurados
+    code: urine_erythrocytes_micro
+
+  - raw: "PROTEINAS"
+    panel: "ORINA COMPLETA"
+    sub_section: quimico
+    code: urine_protein
+
+  - raw: "BILIRRUBINA"
+    panel: "ORINA COMPLETA"
+    sub_section: quimico
+    code: urine_bilirubin
+
+# Differential rows printing a percentage and an absolute count side by side.
+# Each becomes two observations so both series are chartable.
+differential:
+  "Basofilos":
+    pct: basophils_pct
+    abs: basophils_abs
+  "Eosinofilos":
+    pct: eosinophils_pct
+    abs: eosinophils_abs
+  "Segmentados":
+    pct: neutrophils_pct
+    abs: neutrophils_abs
+  "Linfocitos":
+    pct: lymphocytes_pct
+    abs: lymphocytes_abs
+  "Monocitos":
+    pct: monocytes_pct
+    abs: monocytes_abs

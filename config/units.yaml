@@ -1,0 +1,14 @@
+# Cosmetic unit normalisation only. No numeric conversion is performed, so a
+# value is never silently rescaled. If a known analyte appears in a unit other
+# than its canonical one the row is flagged `unit_unexpected` for review rather
+# than converted -- parsing medical numbers wrong is worse than not parsing them.
+#
+# All four sample reports use identical units, so nothing here rescales anything
+# today. The mapping exists so that a future unit change fails loudly.
+
+normalise:
+  "gr/dL": "g/dL"
+  "gr/dl": "g/dL"
+  "ug/dL": "µg/dL"
+  "ug/L": "µg/L"
+  "uL": "/uL"

@@ -1,0 +1,110 @@
+# Canonical analyte dimension. Seeds the `analytes` table.
+#
+# direction records which way is clinically worrying, so the dashboard can
+# colour a trend without hardcoding per-analyte logic: high | low | both | none
+#
+# unit is the canonical unit. Only cosmetic normalisation is applied
+# (gr/dL -> g/dL); no numeric conversion is ever performed.
+
+analytes:
+  # ---- Iron -------------------------------------------------------------
+  ferritin:               {es: Ferritina, en: Ferritin, category: iron, unit: ng/mL, direction: both}
+  serum_iron:             {es: Ferremia, en: Serum iron, category: iron, unit: µg/dL, direction: both}
+  transferrin:            {es: Transferrina, en: Transferrin, category: iron, unit: mg/dL, direction: both}
+  tibc:                   {es: Capacidad de fijación de hierro, en: TIBC, category: iron, unit: µg/dL, direction: both}
+  transferrin_saturation: {es: Saturación de transferrina, en: Transferrin saturation, category: iron, unit: "%", direction: both}
+
+  # ---- Vitamins and minerals -------------------------------------------
+  vitamin_b12:            {es: Vitamina B12, en: Vitamin B12, category: vitamins_minerals, unit: pg/mL, direction: low}
+  folate:                 {es: Folato sérico, en: Serum folate, category: vitamins_minerals, unit: ng/mL, direction: low}
+  vitamin_d_25oh:         {es: Vitamina D 25-OH, en: Vitamin D 25-OH, category: vitamins_minerals, unit: ng/mL, direction: low}
+  magnesium:              {es: Magnesio, en: Magnesium, category: vitamins_minerals, unit: mg/dL, direction: both}
+
+  # ---- Haematology ------------------------------------------------------
+  rbc:                    {es: Recuento de eritrocitos, en: Red blood cells, category: hematology, unit: M/uL, direction: both}
+  hemoglobin:             {es: Hemoglobina, en: Haemoglobin, category: hematology, unit: g/dL, direction: low}
+  hematocrit:             {es: Hematocrito, en: Haematocrit, category: hematology, unit: "%", direction: low}
+  mcv:                    {es: V.C.M, en: MCV, category: hematology, unit: fL, direction: both}
+  mch:                    {es: H.C.M, en: MCH, category: hematology, unit: pg, direction: both}
+  mchc:                   {es: C.H.C.M, en: MCHC, category: hematology, unit: g/dL, direction: both}
+  rdw:                    {es: R.D.W, en: RDW, category: hematology, unit: "%", direction: high}
+  platelets:              {es: Recuento de plaquetas, en: Platelets, category: hematology, unit: k/uL, direction: both}
+  wbc:                    {es: Recuento de leucocitos, en: White blood cells, category: hematology, unit: k/uL, direction: both}
+  esr:                    {es: V.H.S, en: ESR, category: hematology, unit: mm/hr, direction: high}
+  neutrophils_pct:        {es: Segmentados, en: Neutrophils, category: hematology, unit: "%", direction: both}
+  neutrophils_abs:        {es: Recuento absoluto de neutrófilos, en: Absolute neutrophils, category: hematology, unit: /uL, direction: both}
+  lymphocytes_pct:        {es: Linfocitos, en: Lymphocytes, category: hematology, unit: "%", direction: both}
+  lymphocytes_abs:        {es: Linfocitos absolutos, en: Absolute lymphocytes, category: hematology, unit: /uL, direction: both}
+  monocytes_pct:          {es: Monocitos, en: Monocytes, category: hematology, unit: "%", direction: both}
+  monocytes_abs:          {es: Monocitos absolutos, en: Absolute monocytes, category: hematology, unit: /uL, direction: both}
+  eosinophils_pct:        {es: Eosinófilos, en: Eosinophils, category: hematology, unit: "%", direction: high}
+  eosinophils_abs:        {es: Eosinófilos absolutos, en: Absolute eosinophils, category: hematology, unit: /uL, direction: high}
+  basophils_pct:          {es: Basófilos, en: Basophils, category: hematology, unit: "%", direction: high}
+  basophils_abs:          {es: Basófilos absolutos, en: Absolute basophils, category: hematology, unit: /uL, direction: high}
+  band_neutrophils_pct:   {es: Baciliformes, en: Band neutrophils, category: hematology, unit: "%", direction: high}
+  metamyelocytes_pct:     {es: Juveniles, en: Metamyelocytes, category: hematology, unit: "%", direction: high}
+  myelocytes_pct:         {es: Mielocitos, en: Myelocytes, category: hematology, unit: "%", direction: high}
+  promyelocytes_pct:      {es: Promielocitos, en: Promyelocytes, category: hematology, unit: "%", direction: high}
+  blasts_pct:             {es: Blastos, en: Blasts, category: hematology, unit: "%", direction: high}
+  plasma_cells_pct:       {es: Plasmocitos, en: Plasma cells, category: hematology, unit: "%", direction: high}
+
+  # ---- Lipids -----------------------------------------------------------
+  cholesterol_total:      {es: Colesterol total, en: Total cholesterol, category: lipids, unit: mg/dL, direction: high}
+  cholesterol_hdl:        {es: Colesterol HDL, en: HDL cholesterol, category: lipids, unit: mg/dL, direction: low}
+  cholesterol_ldl:        {es: Colesterol LDL, en: LDL cholesterol, category: lipids, unit: mg/dL, direction: high}
+  cholesterol_vldl:       {es: Colesterol VLDL, en: VLDL cholesterol, category: lipids, unit: mg/dL, direction: high}
+  triglycerides:          {es: Triglicéridos, en: Triglycerides, category: lipids, unit: mg/dL, direction: high}
+  cholesterol_ratio_total_hdl: {es: Relación Total/HDL, en: Total/HDL ratio, category: lipids, unit: ratio, direction: high}
+
+  # ---- Metabolic --------------------------------------------------------
+  glucose:                {es: Glucosa, en: Glucose, category: metabolic, unit: mg/dL, direction: high}
+  uric_acid:              {es: Ácido úrico, en: Uric acid, category: metabolic, unit: mg/dL, direction: high}
+  calcium:                {es: Calcio, en: Calcium, category: metabolic, unit: mg/dL, direction: both}
+  phosphorus:             {es: Fósforo, en: Phosphorus, category: metabolic, unit: mg/dL, direction: both}
+  creatinine:             {es: Creatinina, en: Creatinine, category: metabolic, unit: mg/dL, direction: high}
+  bun:                    {es: Nitrógeno ureico, en: Blood urea nitrogen, category: metabolic, unit: mg/dL, direction: high}
+  urea:                   {es: Uremia, en: Urea, category: metabolic, unit: mg/dL, direction: high}
+  albumin:                {es: Albúmina, en: Albumin, category: metabolic, unit: g/dL, direction: low}
+  protein_total:          {es: Proteínas totales, en: Total protein, category: metabolic, unit: g/dL, direction: both}
+
+  # ---- Liver ------------------------------------------------------------
+  ast:                    {es: Transaminasa oxaloacética (GOT), en: AST, category: liver, unit: U/L, direction: high}
+  alt:                    {es: Transaminasa pirúvica (GPT), en: ALT, category: liver, unit: U/L, direction: high}
+  ggt:                    {es: Gama glutamil transpeptidasa, en: GGT, category: liver, unit: U/L, direction: high}
+  alkaline_phosphatase:   {es: Fosfatasa alcalina, en: Alkaline phosphatase, category: liver, unit: U/L, direction: high}
+  ldh:                    {es: Deshidrogenasa láctica, en: LDH, category: liver, unit: U/L, direction: high}
+  bilirubin_total:        {es: Bilirrubina total, en: Total bilirubin, category: liver, unit: mg/dL, direction: high}
+  bilirubin_direct:       {es: Bilirrubina directa, en: Direct bilirubin, category: liver, unit: mg/dL, direction: high}
+  bilirubin_indirect:     {es: Bilirrubina indirecta, en: Indirect bilirubin, category: liver, unit: mg/dL, direction: high}
+  fib4:                   {es: Índice FIB-4, en: FIB-4 index, category: liver, unit: index, direction: high}
+
+  # ---- Coagulation ------------------------------------------------------
+  prothrombin_time:       {es: Tiempo de protrombina, en: Prothrombin time, category: coagulation, unit: seg, direction: high}
+  prothrombin_pct:        {es: Protrombina, en: Prothrombin activity, category: coagulation, unit: "%", direction: low}
+  inr:                    {es: INR, en: INR, category: coagulation, unit: ratio, direction: high}
+
+  # ---- Thyroid ----------------------------------------------------------
+  tsh:                    {es: Hormona tiroestimulante (TSH), en: TSH, category: thyroid, unit: mUI/L, direction: both}
+  t4_total:               {es: Tiroxina (T4), en: Total T4, category: thyroid, unit: µg/dL, direction: both}
+  t4_free:                {es: Tiroxina libre (T4L), en: Free T4, category: thyroid, unit: ng/dL, direction: both}
+  t3_total:               {es: Triyodotironina (T3), en: Total T3, category: thyroid, unit: ng/mL, direction: both}
+
+  # ---- Urine ------------------------------------------------------------
+  urine_appearance:       {es: Aspecto, en: Appearance, category: urine, unit: null, direction: none}
+  urine_color:            {es: Color, en: Colour, category: urine, unit: null, direction: none}
+  urine_specific_gravity: {es: Densidad, en: Specific gravity, category: urine, unit: null, direction: both}
+  urine_ph:               {es: pH urinario, en: Urine pH, category: urine, unit: null, direction: both}
+  urine_leukocytes_chem:  {es: Leucocitos (química), en: Leukocytes (chemical), category: urine, unit: null, direction: high}
+  urine_nitrites:         {es: Nitritos, en: Nitrites, category: urine, unit: null, direction: high}
+  urine_protein:          {es: Proteínas (orina), en: Protein (urine), category: urine, unit: null, direction: high}
+  urine_glucose:          {es: Glucosa (orina), en: Glucose (urine), category: urine, unit: null, direction: high}
+  urine_ketones:          {es: Cuerpos cetónicos, en: Ketones, category: urine, unit: null, direction: high}
+  urine_urobilinogen:     {es: Urobilinógeno, en: Urobilinogen, category: urine, unit: null, direction: high}
+  urine_bilirubin:        {es: Bilirrubina (orina), en: Bilirubin (urine), category: urine, unit: null, direction: high}
+  urine_hemoglobin:       {es: Hemoglobina (orina), en: Haemoglobin (urine), category: urine, unit: null, direction: high}
+  urine_epithelial_cells: {es: Células epiteliales, en: Epithelial cells, category: urine, unit: null, direction: high}
+  urine_leukocytes_micro: {es: Leucocitos (microscopía), en: Leukocytes (microscopy), category: urine, unit: por campo, direction: high}
+  urine_erythrocytes_micro: {es: Eritrocitos (microscopía), en: Erythrocytes (microscopy), category: urine, unit: por campo, direction: high}
+  urine_bacteria:         {es: Bacterias, en: Bacteria, category: urine, unit: null, direction: high}
+  urine_crystals:         {es: Cristales, en: Crystals, category: urine, unit: null, direction: high}
+  urine_casts:            {es: Cilindros, en: Casts, category: urine, unit: null, direction: high}
