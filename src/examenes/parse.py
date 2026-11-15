@@ -12,12 +12,14 @@ from .extract import Line, page_lines
 from .panels import (
     METHOD,
     ReportMeta,
+    is_note_start,
     is_skippable,
     is_stop,
     method_lines,
     panel_title,
     report_meta,
     sample_type,
+    starts_with_value,
     sub_section_of,
 )
 
@@ -117,6 +119,7 @@ def scan_page(page: pdfplumber.page.Page, page_no: int) -> list[RawObservation]:
 
     out: list[RawObservation] = []
     sub_section: str | None = None
+    in_note = False
 
     for ln in lines[header_idx + 1 :]:
         text = ln.text.strip()
@@ -124,6 +127,9 @@ def scan_page(page: pdfplumber.page.Page, page_no: int) -> list[RawObservation]:
             break
         if (sub := sub_section_of(text)) is not None:
             sub_section = sub
+            continue
+        if is_note_start(text):
+            in_note = True
             continue
         if is_skippable(text):
             continue
@@ -135,6 +141,10 @@ def scan_page(page: pdfplumber.page.Page, page_no: int) -> list[RawObservation]:
             continue
 
         cells = split_row(ln, layout)
+        if in_note:
+            if not (starts_with_value(cells.value) or starts_with_value(cells.absolute)):
+                continue
+            in_note = False
         if not _is_result_row(cells):
             continue
 

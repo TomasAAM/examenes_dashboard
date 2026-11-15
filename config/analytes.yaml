@@ -88,6 +88,7 @@ analytes:
   t4_total:               {es: Tiroxina (T4), en: Total T4, category: thyroid, unit: µg/dL, direction: both}
   t4_free:                {es: Tiroxina libre (T4L), en: Free T4, category: thyroid, unit: ng/dL, direction: both}
   t3_total:               {es: Triyodotironina (T3), en: Total T3, category: thyroid, unit: ng/mL, direction: both}
+  t3_free:                {es: Triyodotironina libre (T3L), en: Free T3, category: thyroid, unit: pg/mL, direction: both}
 
   # ---- Urine ------------------------------------------------------------
   urine_appearance:       {es: Aspecto, en: Appearance, category: urine, unit: null, direction: none}

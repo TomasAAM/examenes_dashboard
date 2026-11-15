@@ -11,7 +11,14 @@ from examenes.normalize import (
     parse_reference,
     parse_value,
 )
-from examenes.panels import is_skippable, is_stop, parse_chilean_date, sub_section_of
+from examenes.panels import (
+    is_note_start,
+    is_skippable,
+    is_stop,
+    parse_chilean_date,
+    starts_with_value,
+    sub_section_of,
+)
 
 
 class TestHiddenText:
@@ -222,6 +229,28 @@ class TestPageStructure:
         line = "Nota : Valores de referencia actualizados el 08.05.2025."
         assert not is_stop(line)
         assert is_skippable(line)
+
+    def test_nota_opens_a_note(self):
+        assert is_note_start("Nota: Conforme al Oficio CP N° 1 (2026), se informa que")
+        assert not is_note_start("HEMOGLOBINA 14.4 gr/dL")
+
+    @pytest.mark.parametrize(
+        "cell,expected",
+        [
+            ("28.0", True),
+            ("* 1.17", True),
+            ("< 0.5", True),
+            ("-1.2", True),
+            (": 0.44", True),  # INDICE FIB 4 prints its value after a colon
+            ("en reemplazo", False),  # wrapped Nota prose split into the value column
+            ("de 2026.", False),
+            ("Negativo", False),
+            ("", False),
+            (None, False),
+        ],
+    )
+    def test_starts_with_value(self, cell, expected):
+        assert starts_with_value(cell) is expected
 
     @pytest.mark.parametrize(
         "line,code",

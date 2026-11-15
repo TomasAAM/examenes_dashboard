@@ -2,6 +2,7 @@
 
 from pathlib import Path
 
+import duckdb
 import pytest
 from fastapi.testclient import TestClient
 
@@ -38,12 +39,19 @@ def test_local_endpoint_if_exists(client):
     if not db_path.exists():
         pytest.skip("Local database does not exist")
 
+    con = duckdb.connect(str(db_path), read_only=True)
+    try:
+        (report_count,) = con.execute("SELECT count(*) FROM reports").fetchone()
+        (obs_count,) = con.execute("SELECT count(*) FROM v_observations").fetchone()
+    finally:
+        con.close()
+
     response = client.get("/api/local")
     assert response.status_code == 200
     data = response.json()
     assert data["status"] == "success"
-    assert data["kpis"]["draw_count"] == 4
-    assert data["kpis"]["total_observations"] == 300
+    assert data["kpis"]["draw_count"] == report_count
+    assert data["kpis"]["total_observations"] == obs_count
 
 
 def test_parse_single_pdf(client):

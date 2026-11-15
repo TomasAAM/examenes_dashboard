@@ -29,6 +29,13 @@ STOP_MARKERS = (
 # between real results on PERFIL HEPATICO, so they cannot be stop markers.
 SKIP_PREFIXES = ("Nota", "RESULTADO", "Bibliografía", "Valores de referencia")
 
+# A `Nota` can wrap onto further lines of prose, which split into cells like a
+# result row would. Those continuation lines are skipped until a line whose
+# value cell starts with a number, which is how every real result in the
+# note-bearing panels begins.
+NOTE_PREFIX = "Nota"
+_VALUE_START = re.compile(r"^[:*<>≤≥\s]*[-+]?\d")
+
 # `Método` is context-dependent: on a titled panel it introduces the
 # interpretation guide and ends the table, but on the untitled stacked-metric
 # pages it merely separates one single-metric block from the next.
@@ -215,6 +222,47 @@ def is_skippable(text: str) -> bool:
         True for interleaved annotations and repeated column headings.
     """
     return text.strip().startswith(SKIP_PREFIXES)
+
+
+def is_note_start(text: str) -> bool:
+    """Return whether a line opens a ``Nota`` annotation.
+
+    Parameters
+    ----------
+    text : str
+        Line text.
+
+    Returns
+    -------
+    bool
+        True when the line starts with ``Nota``.
+    """
+    return text.strip().startswith(NOTE_PREFIX)
+
+
+def starts_with_value(cell: str | None) -> bool:
+    """Return whether a value cell begins with a number.
+
+    Used to tell a real result apart from a wrapped ``Nota`` continuation line.
+
+    Parameters
+    ----------
+    cell : str or None
+        Value or absolute cell text.
+
+    Returns
+    -------
+    bool
+        True for cells such as ``28.0``, ``* 1.17``, ``< 0.5`` or ``: 0.44``.
+
+    Examples
+    --------
+    >>> starts_with_value("* 1.17")
+    True
+    >>> starts_with_value("en reemplazo")
+    False
+    """
+    return bool(cell) and bool(_VALUE_START.match(cell.strip()))
 
 
 def sub_section_of(text: str) -> str | None:

@@ -58,6 +58,8 @@ aliases:
   "BILIRRUBINA DIRECTA": bilirubin_direct
   "BILIRRUBINA INDIRECTA": bilirubin_indirect
   "TRANSAMINASA OXALOACETICA": ast
+  # Spelling used from the November 2026 report format onwards.
+  "TRANSAMINASA OXALACETICA": ast
   "TRANSAMINASA PIRUVICA (GPT)": alt
   "GAMA GLUTAMIL TRANSPEPTIDASA": ggt
   "FOSFATASA ALCALINA": alkaline_phosphatase
@@ -82,6 +84,7 @@ aliases:
   "TIROXINA (T4)": t4_total
   "TIROXINA LIBRE (T4L)": t4_free
   "TRIYODOTIRONINA (T3)": t3_total
+  "TRIYODOTIRONINA (T3) LIBRE": t3_free
 
   # Urine, physical examination
   "ASPECTO": urine_appearance
