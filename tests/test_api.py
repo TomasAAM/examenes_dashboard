@@ -69,7 +69,7 @@ def test_parse_single_pdf(client):
     data = response.json()
     assert data["status"] == "success"
     assert data["kpis"]["draw_count"] == 1
-    assert data["kpis"]["total_observations"] == 83
+    assert data["kpis"]["total_observations"] == 84  # includes R.A.N. as its own analyte
     assert len(data["unmapped"]) == 0
 
 

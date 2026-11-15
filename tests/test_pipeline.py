@@ -173,15 +173,6 @@ class TestNameCollisions:
 class TestDifferential:
     """Percentage and absolute count become separate analytes."""
 
-    @pytest.mark.xfail(
-        strict=True,
-        reason=(
-            "Known data-model gap: `R.A.N.` (segmented + band neutrophils) and the "
-            "`Segmentados` absolute count both map to `neutrophils_abs`. They agree "
-            "only when bands are 0%; on the 2026-11-14 draw (3% bands) they differ. "
-            "Fix by giving `R.A.N.` its own analyte code, then remove this marker."
-        ),
-    )
     def test_neutrophils_split(self, by_code, expected):
         draw = expected.latest
         pct = observation_on(by_code, "neutrophils_pct", draw)
@@ -191,6 +182,21 @@ class TestDifferential:
         # A percentage and a per-microlitre count cannot be the same number.
         assert pct.value_num != abs_.value_num
         assert abs_.value_num > pct.value_num
+
+    def test_ran_is_segmented_plus_bands(self, by_code):
+        """R.A.N. counts segmented and band neutrophils, so it is its own analyte.
+
+        It only equals the `Segmentados` absolute count while bands are 0%.
+        """
+        draws = {str(o.sample_date) for o in by_code["neutrophils_total_abs"]}
+        assert draws, "R.A.N. was not captured"
+        for draw in sorted(draws):
+            total = observation_on(by_code, "neutrophils_total_abs", draw).value_num
+            segmented = observation_on(by_code, "neutrophils_abs", draw).value_num
+            bands_pct = observation_on(by_code, "band_neutrophils_pct", draw).value_num
+            wbc_per_ul = observation_on(by_code, "wbc", draw).value_num * 1000
+            # Printed percentages are whole numbers, so allow 1% of the WBC count.
+            assert abs(total - (segmented + bands_pct / 100 * wbc_per_ul)) <= 0.01 * wbc_per_ul
 
     def test_percentage_owns_the_reference_and_absolute_does_not(self, by_code, expected):
         draw = expected.latest

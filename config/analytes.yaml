@@ -32,7 +32,8 @@ analytes:
   wbc:                    {es: Recuento de leucocitos, en: White blood cells, category: hematology, unit: k/uL, direction: both}
   esr:                    {es: V.H.S, en: ESR, category: hematology, unit: mm/hr, direction: high}
   neutrophils_pct:        {es: Segmentados, en: Neutrophils, category: hematology, unit: "%", direction: both}
-  neutrophils_abs:        {es: Recuento absoluto de neutrófilos, en: Absolute neutrophils, category: hematology, unit: /uL, direction: both}
+  neutrophils_abs:        {es: Segmentados absolutos, en: Absolute segmented neutrophils, category: hematology, unit: /uL, direction: both}
+  neutrophils_total_abs:  {es: Recuento absoluto de neutrófilos (R.A.N.), en: Absolute neutrophil count (ANC), category: hematology, unit: /uL, direction: both}
   lymphocytes_pct:        {es: Linfocitos, en: Lymphocytes, category: hematology, unit: "%", direction: both}
   lymphocytes_abs:        {es: Linfocitos absolutos, en: Absolute lymphocytes, category: hematology, unit: /uL, direction: both}
   monocytes_pct:          {es: Monocitos, en: Monocytes, category: hematology, unit: "%", direction: both}

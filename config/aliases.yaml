@@ -40,8 +40,9 @@ aliases:
   "Baciliformes": band_neutrophils_pct
   "Plasmocitos": plasma_cells_pct
   # Absolute neutrophil count, printed as its own row in the absolute column.
-  # Reconciles with the absolute count on the `Segmentados` row.
-  "R.A.N. (Recuento absoluto de neutrofilos)": neutrophils_abs
+  # It is segmented + band neutrophils, so it only equals the `Segmentados`
+  # absolute count while bands are 0% (2026-11-14: 2109 + 3% bands = 2220).
+  "R.A.N. (Recuento absoluto de neutrofilos)": neutrophils_total_abs
 
   # Metabolic / biochemical
   "ACIDO URICO": uric_acid
