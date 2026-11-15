@@ -5,7 +5,7 @@ import KpiCards from './components/KpiCards.jsx';
 import TrendChart from './components/TrendChart.jsx';
 import PanelMatrix from './components/PanelMatrix.jsx';
 import UnmappedAlert from './components/UnmappedAlert.jsx';
-import { Shield, Sparkles, Zap, Lock, RefreshCw } from 'lucide-react';
+import { Shield, Sparkles, Zap, Lock, RefreshCw, AlertCircle } from 'lucide-react';
 
 export default function App() {
   const [data, setData] = useState(null);
@@ -13,6 +13,9 @@ export default function App() {
   const [error, setError] = useState(null);
   const [isLocalAvailable, setIsLocalAvailable] = useState(false);
   const [selectedAnalyte, setSelectedAnalyte] = useState(null);
+  // The server keeps nothing between requests, so the browser holds the PDFs
+  // the user uploaded. Adding a report re-sends all of them in one request.
+  const [uploadedFiles, setUploadedFiles] = useState([]);
 
   // Check if static data.json exists or local API DB exists
   useEffect(() => {
@@ -44,7 +47,22 @@ export default function App() {
       .catch(() => setIsLocalAvailable(false));
   }, []);
 
-  const handleFilesSelected = async (files) => {
+  const fileIdentity = (file) => `${file.name}|${file.size}|${file.lastModified}`;
+
+  const mergeFiles = (existing, incoming) => {
+    const seen = new Set(existing.map(fileIdentity));
+    const merged = [...existing];
+    incoming.forEach((file) => {
+      const id = fileIdentity(file);
+      if (!seen.has(id)) {
+        seen.add(id);
+        merged.push(file);
+      }
+    });
+    return merged;
+  };
+
+  const parseFiles = async (files) => {
     if (!files || files.length === 0) return;
     setLoading(true);
     setError(null);
@@ -66,6 +84,9 @@ export default function App() {
       }
 
       const json = await response.json();
+      // Only commit the file list once the server accepted it, so a PDF that
+      // fails to parse does not poison every later upload.
+      setUploadedFiles(files);
       setData(json);
     } catch (err) {
       console.error('Failed to parse PDFs:', err);
@@ -75,6 +96,14 @@ export default function App() {
     }
   };
 
+  const handleFilesSelected = (files) => parseFiles(mergeFiles([], files));
+
+  const handleAddFiles = (files) => {
+    const merged = mergeFiles(uploadedFiles, files);
+    if (merged.length === uploadedFiles.length) return;
+    parseFiles(merged);
+  };
+
   const handleDemo = async () => {
     setLoading(true);
     setError(null);
@@ -82,6 +111,7 @@ export default function App() {
       const response = await fetch('/api/demo');
       if (!response.ok) throw new Error('No se pudo cargar los datos de demostración.');
       const json = await response.json();
+      setUploadedFiles([]);
       setData(json);
     } catch (err) {
       console.error(err);
@@ -98,6 +128,7 @@ export default function App() {
       const response = await fetch('/api/local');
       if (!response.ok) throw new Error('No se pudo cargar la base de datos local.');
       const json = await response.json();
+      setUploadedFiles([]);
       setData(json);
     } catch (err) {
       console.error(err);
@@ -111,6 +142,7 @@ export default function App() {
     setData(null);
     setError(null);
     setSelectedAnalyte(null);
+    setUploadedFiles([]);
   };
 
   return (
@@ -121,6 +153,9 @@ export default function App() {
         onDemo={handleDemo}
         onLocal={handleLocal}
         onClear={handleClear}
+        onAddFiles={handleAddFiles}
+        canAddFiles={uploadedFiles.length > 0}
+        uploadedCount={uploadedFiles.length}
         loading={loading}
         isLocalAvailable={isLocalAvailable}
       />
@@ -194,6 +229,16 @@ export default function App() {
         ) : (
           /* Active Dashboard State */
           <div className="space-y-6">
+            {error && (
+              <div className="p-3.5 rounded-xl bg-rose-950/40 border border-rose-800/60 text-rose-300 text-xs flex items-start gap-2.5">
+                <AlertCircle className="h-4 w-4 text-rose-400 shrink-0 mt-0.5" />
+                <div>
+                  <span className="font-semibold">No se pudo agregar el informe: </span>
+                  {error}
+                </div>
+              </div>
+            )}
+
             {/* Unmapped analytes warning (if any) */}
             <UnmappedAlert unmapped={data.unmapped} />
 

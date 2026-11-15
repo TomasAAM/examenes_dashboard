@@ -63,3 +63,38 @@ def test_parse_single_pdf(client):
     assert data["kpis"]["draw_count"] == 1
     assert data["kpis"]["total_observations"] == 83
     assert len(data["unmapped"]) == 0
+
+
+def test_parse_appended_upload_does_not_duplicate(client):
+    """Re-sending an already loaded PDF with a new one must not double-count.
+
+    The "Agregar PDF" button re-sends every previously uploaded file together
+    with the new ones, relying on the sha256 idempotency key to deduplicate.
+    """
+    first = Path("input/results-26748.pdf")
+    second = Path("input/results-26748-1.pdf")
+    if not (first.exists() and second.exists()):
+        pytest.skip("Test input PDFs not found")
+
+    def post(paths: list[Path]) -> dict:
+        handles = [p.open("rb") for p in paths]
+        try:
+            response = client.post(
+                "/api/parse",
+                files=[
+                    ("files", (p.name, fh, "application/pdf"))
+                    for p, fh in zip(paths, handles, strict=True)
+                ],
+            )
+        finally:
+            for fh in handles:
+                fh.close()
+        assert response.status_code == 200
+        return response.json()
+
+    combined = post([first, second])
+    with_repeat = post([first, second, first])
+
+    assert with_repeat["kpis"]["draw_count"] == 2
+    assert with_repeat["kpis"] == combined["kpis"]
+    assert len(with_repeat["observations"]) == len(combined["observations"])

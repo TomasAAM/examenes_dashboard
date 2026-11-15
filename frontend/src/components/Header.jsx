@@ -1,7 +1,28 @@
-import React from 'react';
-import { Activity, ShieldCheck, Sparkles, Database, Trash2, FileText } from 'lucide-react';
+import React, { useRef } from 'react';
+import { Activity, ShieldCheck, Sparkles, Database, Trash2, FileText, FilePlus } from 'lucide-react';
 
-export default function Header({ hasData, onDemo, onLocal, onClear, loading, isLocalAvailable }) {
+export default function Header({
+  hasData,
+  onDemo,
+  onLocal,
+  onClear,
+  onAddFiles,
+  canAddFiles,
+  uploadedCount,
+  loading,
+  isLocalAvailable,
+}) {
+  const addInputRef = useRef(null);
+
+  const handleAddInput = (e) => {
+    const pdfFiles = Array.from(e.target.files || []).filter(
+      (f) => f.type === 'application/pdf' || f.name.toLowerCase().endsWith('.pdf')
+    );
+    // Reset so picking the same file again still fires onChange.
+    e.target.value = '';
+    if (pdfFiles.length > 0) onAddFiles(pdfFiles);
+  };
+
   return (
     <header className="border-b border-slate-800/80 bg-slate-950/70 backdrop-blur-md sticky top-0 z-40">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -50,6 +71,28 @@ export default function Header({ hasData, onDemo, onLocal, onClear, loading, isL
                 <Database className="h-3.5 w-3.5 text-cyan-400" />
                 <span>Base Local</span>
               </button>
+            )}
+
+            {hasData && canAddFiles && (
+              <>
+                <input
+                  ref={addInputRef}
+                  type="file"
+                  accept=".pdf,application/pdf"
+                  multiple
+                  onChange={handleAddInput}
+                  className="hidden"
+                />
+                <button
+                  onClick={() => addInputRef.current?.click()}
+                  disabled={loading}
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-cyan-500 hover:bg-cyan-400 text-slate-950 transition-all disabled:opacity-50 shadow-md shadow-cyan-500/20"
+                  title={`Agregar informes a los ${uploadedCount} ya cargados`}
+                >
+                  <FilePlus className="h-3.5 w-3.5" />
+                  <span>Agregar PDF</span>
+                </button>
+              </>
             )}
 
             {hasData && (
