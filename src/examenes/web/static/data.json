@@ -4,7 +4,7 @@
     "draw_count": 5,
     "total_observations": 387,
     "unique_analytes": 86,
-    "verified_count": 300,
+    "verified_count": 387,
     "out_of_range_count": 24,
     "flagged_count": 157,
     "date_start": "2025-01-11",
@@ -1492,7 +1492,7 @@
       "cod_lis": "11466583",
       "confidence": "check",
       "flags": "no_reference",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -4180,7 +4180,7 @@
       "cod_lis": "11863796",
       "confidence": "check",
       "flags": "no_reference",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -5844,7 +5844,7 @@
       "cod_lis": "12475923",
       "confidence": "check",
       "flags": "no_reference",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -8532,7 +8532,7 @@
       "cod_lis": "13088682",
       "confidence": "check",
       "flags": "no_reference",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -10516,7 +10516,7 @@
       "cod_lis": null,
       "confidence": "ok",
       "flags": "",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -10548,7 +10548,7 @@
       "cod_lis": null,
       "confidence": "ok",
       "flags": "",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -10580,7 +10580,7 @@
       "cod_lis": null,
       "confidence": "check",
       "flags": "no_reference",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -10612,7 +10612,7 @@
       "cod_lis": null,
       "confidence": "ok",
       "flags": "",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -10644,7 +10644,7 @@
       "cod_lis": null,
       "confidence": "ok",
       "flags": "",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -10676,7 +10676,7 @@
       "cod_lis": null,
       "confidence": "check",
       "flags": "no_reference",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -10708,7 +10708,7 @@
       "cod_lis": null,
       "confidence": "check",
       "flags": "no_reference",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -10740,7 +10740,7 @@
       "cod_lis": null,
       "confidence": "ok",
       "flags": "",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -10772,7 +10772,7 @@
       "cod_lis": null,
       "confidence": "ok",
       "flags": "",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -10804,7 +10804,7 @@
       "cod_lis": null,
       "confidence": "check",
       "flags": "no_reference",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -10836,7 +10836,7 @@
       "cod_lis": null,
       "confidence": "ok",
       "flags": "",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -10868,7 +10868,7 @@
       "cod_lis": null,
       "confidence": "ok",
       "flags": "",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -10900,7 +10900,7 @@
       "cod_lis": null,
       "confidence": "ok",
       "flags": "",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -10932,7 +10932,7 @@
       "cod_lis": null,
       "confidence": "ok",
       "flags": "",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -10964,7 +10964,7 @@
       "cod_lis": null,
       "confidence": "ok",
       "flags": "",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -10996,7 +10996,7 @@
       "cod_lis": null,
       "confidence": "check",
       "flags": "no_reference",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -11028,7 +11028,7 @@
       "cod_lis": null,
       "confidence": "check",
       "flags": "no_reference",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -11060,7 +11060,7 @@
       "cod_lis": null,
       "confidence": "ok",
       "flags": "",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -11092,7 +11092,7 @@
       "cod_lis": null,
       "confidence": "check",
       "flags": "no_reference",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -11124,7 +11124,7 @@
       "cod_lis": null,
       "confidence": "check",
       "flags": "no_reference",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -11156,7 +11156,7 @@
       "cod_lis": null,
       "confidence": "check",
       "flags": "no_reference",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -11188,7 +11188,7 @@
       "cod_lis": null,
       "confidence": "ok",
       "flags": "",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -11220,7 +11220,7 @@
       "cod_lis": null,
       "confidence": "check",
       "flags": "no_reference",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -11252,7 +11252,7 @@
       "cod_lis": null,
       "confidence": "ok",
       "flags": "",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -11284,7 +11284,7 @@
       "cod_lis": null,
       "confidence": "ok",
       "flags": "",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -11316,7 +11316,7 @@
       "cod_lis": null,
       "confidence": "ok",
       "flags": "",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -11348,7 +11348,7 @@
       "cod_lis": null,
       "confidence": "ok",
       "flags": "",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -11380,7 +11380,7 @@
       "cod_lis": null,
       "confidence": "check",
       "flags": "no_reference",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -11412,7 +11412,7 @@
       "cod_lis": null,
       "confidence": "ok",
       "flags": "",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -11444,7 +11444,7 @@
       "cod_lis": null,
       "confidence": "ok",
       "flags": "",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -11476,7 +11476,7 @@
       "cod_lis": null,
       "confidence": "ok",
       "flags": "",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -11508,7 +11508,7 @@
       "cod_lis": null,
       "confidence": "ok",
       "flags": "",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -11540,7 +11540,7 @@
       "cod_lis": null,
       "confidence": "ok",
       "flags": "",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -11572,7 +11572,7 @@
       "cod_lis": null,
       "confidence": "ok",
       "flags": "",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -11604,7 +11604,7 @@
       "cod_lis": null,
       "confidence": "ok",
       "flags": "",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -11636,7 +11636,7 @@
       "cod_lis": null,
       "confidence": "ok",
       "flags": "",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -11668,7 +11668,7 @@
       "cod_lis": null,
       "confidence": "check",
       "flags": "no_reference",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -11700,7 +11700,7 @@
       "cod_lis": null,
       "confidence": "check",
       "flags": "no_reference",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -11732,7 +11732,7 @@
       "cod_lis": null,
       "confidence": "ok",
       "flags": "",
-      "verified": false,
+      "verified": true,
       "also_in_panels": "PERFIL BIOQUIMICO"
     },
     {
@@ -11764,7 +11764,7 @@
       "cod_lis": null,
       "confidence": "check",
       "flags": "no_reference",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -11796,7 +11796,7 @@
       "cod_lis": null,
       "confidence": "ok",
       "flags": "",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -11828,7 +11828,7 @@
       "cod_lis": null,
       "confidence": "ok",
       "flags": "",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -11860,7 +11860,7 @@
       "cod_lis": null,
       "confidence": "check",
       "flags": "no_reference",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -11892,7 +11892,7 @@
       "cod_lis": null,
       "confidence": "ok",
       "flags": "",
-      "verified": false,
+      "verified": true,
       "also_in_panels": "PERFIL BIOQUIMICO"
     },
     {
@@ -11924,7 +11924,7 @@
       "cod_lis": null,
       "confidence": "ok",
       "flags": "",
-      "verified": false,
+      "verified": true,
       "also_in_panels": "PERFIL BIOQUIMICO"
     },
     {
@@ -11956,7 +11956,7 @@
       "cod_lis": null,
       "confidence": "ok",
       "flags": "",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -11988,7 +11988,7 @@
       "cod_lis": null,
       "confidence": "ok",
       "flags": "",
-      "verified": false,
+      "verified": true,
       "also_in_panels": "PERFIL BIOQUIMICO"
     },
     {
@@ -12020,7 +12020,7 @@
       "cod_lis": null,
       "confidence": "ok",
       "flags": "",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -12052,7 +12052,7 @@
       "cod_lis": null,
       "confidence": "check",
       "flags": "no_reference",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -12084,7 +12084,7 @@
       "cod_lis": null,
       "confidence": "ok",
       "flags": "",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -12116,7 +12116,7 @@
       "cod_lis": null,
       "confidence": "ok",
       "flags": "",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -12148,7 +12148,7 @@
       "cod_lis": null,
       "confidence": "ok",
       "flags": "",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -12180,7 +12180,7 @@
       "cod_lis": null,
       "confidence": "ok",
       "flags": "",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -12212,7 +12212,7 @@
       "cod_lis": null,
       "confidence": "ok",
       "flags": "",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -12244,7 +12244,7 @@
       "cod_lis": null,
       "confidence": "ok",
       "flags": "",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -12276,7 +12276,7 @@
       "cod_lis": null,
       "confidence": "ok",
       "flags": "",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -12308,7 +12308,7 @@
       "cod_lis": null,
       "confidence": "ok",
       "flags": "",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -12340,7 +12340,7 @@
       "cod_lis": null,
       "confidence": "ok",
       "flags": "",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -12372,7 +12372,7 @@
       "cod_lis": null,
       "confidence": "ok",
       "flags": "",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -12404,7 +12404,7 @@
       "cod_lis": null,
       "confidence": "ok",
       "flags": "",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -12436,7 +12436,7 @@
       "cod_lis": null,
       "confidence": "ok",
       "flags": "",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -12468,7 +12468,7 @@
       "cod_lis": null,
       "confidence": "check",
       "flags": "no_reference;value_is_text",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -12500,7 +12500,7 @@
       "cod_lis": null,
       "confidence": "check",
       "flags": "value_is_text",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -12532,7 +12532,7 @@
       "cod_lis": null,
       "confidence": "check",
       "flags": "value_is_text",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -12564,7 +12564,7 @@
       "cod_lis": null,
       "confidence": "check",
       "flags": "value_is_text",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -12596,7 +12596,7 @@
       "cod_lis": null,
       "confidence": "check",
       "flags": "no_reference;value_is_text",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -12628,7 +12628,7 @@
       "cod_lis": null,
       "confidence": "check",
       "flags": "value_is_text",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -12660,7 +12660,7 @@
       "cod_lis": null,
       "confidence": "check",
       "flags": "value_is_text",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -12692,7 +12692,7 @@
       "cod_lis": null,
       "confidence": "check",
       "flags": "value_is_text",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -12724,7 +12724,7 @@
       "cod_lis": null,
       "confidence": "ok",
       "flags": "",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -12756,7 +12756,7 @@
       "cod_lis": null,
       "confidence": "check",
       "flags": "ref_has_trailing_text;value_is_range",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -12788,7 +12788,7 @@
       "cod_lis": null,
       "confidence": "check",
       "flags": "value_is_text",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -12820,7 +12820,7 @@
       "cod_lis": null,
       "confidence": "check",
       "flags": "value_is_text",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -12852,7 +12852,7 @@
       "cod_lis": null,
       "confidence": "check",
       "flags": "ref_has_trailing_text;value_is_range",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -12884,7 +12884,7 @@
       "cod_lis": null,
       "confidence": "check",
       "flags": "value_is_text",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -12916,7 +12916,7 @@
       "cod_lis": null,
       "confidence": "check",
       "flags": "value_is_text",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -12948,7 +12948,7 @@
       "cod_lis": null,
       "confidence": "check",
       "flags": "value_is_text",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -12980,7 +12980,7 @@
       "cod_lis": null,
       "confidence": "check",
       "flags": "value_is_text",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -13012,7 +13012,7 @@
       "cod_lis": null,
       "confidence": "suspect",
       "flags": "asterisk_range_mismatch",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -13044,7 +13044,7 @@
       "cod_lis": null,
       "confidence": "check",
       "flags": "no_reference",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -13076,7 +13076,7 @@
       "cod_lis": null,
       "confidence": "ok",
       "flags": "",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -13108,7 +13108,7 @@
       "cod_lis": null,
       "confidence": "ok",
       "flags": "",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     },
     {
@@ -13140,7 +13140,7 @@
       "cod_lis": null,
       "confidence": "ok",
       "flags": "",
-      "verified": false,
+      "verified": true,
       "also_in_panels": null
     }
   ],
